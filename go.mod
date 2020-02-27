@@ -1,4 +1,4 @@
-module github.com/hashicorp/raft
+module github.com/peacepanda/raft
 
 go 1.12
 
