@@ -1117,3 +1117,12 @@ func (r *Raft) LeadershipTransferToServer(id ServerID, address ServerAddress) Fu
 
 	return r.initiateLeadershipTransfer(&id, &address)
 }
+
+func (r *Raft) GetFollowerLastConnect(serverID ServerID) (time.Time, bool) {
+	state, ok := r.leaderState.replState[serverID]
+	if ok {
+		return state.lastContact, true
+	} else {
+		return time.Time{}, false
+	}
+}
